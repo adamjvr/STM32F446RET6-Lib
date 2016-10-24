@@ -1,0 +1,226 @@
+ARM GAS  /tmp/cc47T95V.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 6
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.syntax unified
+  17              		.file	"gpio.c"
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.section	.text.MX_GPIO_Init,"ax",%progbits
+  22              		.align	2
+  23              		.global	MX_GPIO_Init
+  24              		.thumb
+  25              		.thumb_func
+  27              	MX_GPIO_Init:
+  28              	.LFB126:
+  29              		.file 1 "Src/gpio.c"
+   1:Src/gpio.c    **** /**
+   2:Src/gpio.c    ****   ******************************************************************************
+   3:Src/gpio.c    ****   * File Name          : gpio.c
+   4:Src/gpio.c    ****   * Description        : This file provides code for the configuration
+   5:Src/gpio.c    ****   *                      of all used GPIO pins.
+   6:Src/gpio.c    ****   ******************************************************************************
+   7:Src/gpio.c    ****   *
+   8:Src/gpio.c    ****   * Copyright (c) 2016 STMicroelectronics International N.V. 
+   9:Src/gpio.c    ****   * All rights reserved.
+  10:Src/gpio.c    ****   *
+  11:Src/gpio.c    ****   * Redistribution and use in source and binary forms, with or without 
+  12:Src/gpio.c    ****   * modification, are permitted, provided that the following conditions are met:
+  13:Src/gpio.c    ****   *
+  14:Src/gpio.c    ****   * 1. Redistribution of source code must retain the above copyright notice, 
+  15:Src/gpio.c    ****   *    this list of conditions and the following disclaimer.
+  16:Src/gpio.c    ****   * 2. Redistributions in binary form must reproduce the above copyright notice,
+  17:Src/gpio.c    ****   *    this list of conditions and the following disclaimer in the documentation
+  18:Src/gpio.c    ****   *    and/or other materials provided with the distribution.
+  19:Src/gpio.c    ****   * 3. Neither the name of STMicroelectronics nor the names of other 
+  20:Src/gpio.c    ****   *    contributors to this software may be used to endorse or promote products 
+  21:Src/gpio.c    ****   *    derived from this software without specific written permission.
+  22:Src/gpio.c    ****   * 4. This software, including modifications and/or derivative works of this 
+  23:Src/gpio.c    ****   *    software, must execute solely and exclusively on microcontroller or
+  24:Src/gpio.c    ****   *    microprocessor devices manufactured by or for STMicroelectronics.
+  25:Src/gpio.c    ****   * 5. Redistribution and use of this software other than as permitted under 
+  26:Src/gpio.c    ****   *    this license is void and will automatically terminate your rights under 
+  27:Src/gpio.c    ****   *    this license. 
+  28:Src/gpio.c    ****   *
+  29:Src/gpio.c    ****   * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS" 
+ARM GAS  /tmp/cc47T95V.s 			page 2
+
+
+  30:Src/gpio.c    ****   * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT 
+  31:Src/gpio.c    ****   * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
+  32:Src/gpio.c    ****   * PARTICULAR PURPOSE AND NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY
+  33:Src/gpio.c    ****   * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT 
+  34:Src/gpio.c    ****   * SHALL STMICROELECTRONICS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+  35:Src/gpio.c    ****   * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  36:Src/gpio.c    ****   * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, 
+  37:Src/gpio.c    ****   * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
+  38:Src/gpio.c    ****   * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
+  39:Src/gpio.c    ****   * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+  40:Src/gpio.c    ****   * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  41:Src/gpio.c    ****   *
+  42:Src/gpio.c    ****   ******************************************************************************
+  43:Src/gpio.c    ****   */
+  44:Src/gpio.c    **** 
+  45:Src/gpio.c    **** /* Includes ------------------------------------------------------------------*/
+  46:Src/gpio.c    **** #include "gpio.h"
+  47:Src/gpio.c    **** /* USER CODE BEGIN 0 */
+  48:Src/gpio.c    **** 
+  49:Src/gpio.c    **** /* USER CODE END 0 */
+  50:Src/gpio.c    **** 
+  51:Src/gpio.c    **** /*----------------------------------------------------------------------------*/
+  52:Src/gpio.c    **** /* Configure GPIO                                                             */
+  53:Src/gpio.c    **** /*----------------------------------------------------------------------------*/
+  54:Src/gpio.c    **** /* USER CODE BEGIN 1 */
+  55:Src/gpio.c    **** 
+  56:Src/gpio.c    **** /* USER CODE END 1 */
+  57:Src/gpio.c    **** 
+  58:Src/gpio.c    **** /** Configure pins as 
+  59:Src/gpio.c    ****         * Analog 
+  60:Src/gpio.c    ****         * Input 
+  61:Src/gpio.c    ****         * Output
+  62:Src/gpio.c    ****         * EVENT_OUT
+  63:Src/gpio.c    ****         * EXTI
+  64:Src/gpio.c    **** */
+  65:Src/gpio.c    **** void MX_GPIO_Init(void)
+  66:Src/gpio.c    **** {
+  30              		.loc 1 66 0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 16
+  33              		@ frame_needed = 1, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+  35 0000 80B4     		push	{r7}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 4
+  38              		.cfi_offset 7, -4
+  39 0002 85B0     		sub	sp, sp, #20
+  40              	.LCFI1:
+  41              		.cfi_def_cfa_offset 24
+  42 0004 00AF     		add	r7, sp, #0
+  43              	.LCFI2:
+  44              		.cfi_def_cfa_register 7
+  45              	.LBB2:
+  67:Src/gpio.c    **** 
+  68:Src/gpio.c    ****   /* GPIO Ports Clock Enable */
+  69:Src/gpio.c    ****   __HAL_RCC_GPIOC_CLK_ENABLE();
+  46              		.loc 1 69 0
+ARM GAS  /tmp/cc47T95V.s 			page 3
+
+
+  47 0006 0023     		movs	r3, #0
+  48 0008 FB60     		str	r3, [r7, #12]
+  49 000a 1E4A     		ldr	r2, .L2
+  50 000c 1D4B     		ldr	r3, .L2
+  51 000e 1B6B     		ldr	r3, [r3, #48]
+  52 0010 43F00403 		orr	r3, r3, #4
+  53 0014 1363     		str	r3, [r2, #48]
+  54 0016 1B4B     		ldr	r3, .L2
+  55 0018 1B6B     		ldr	r3, [r3, #48]
+  56 001a 03F00403 		and	r3, r3, #4
+  57 001e FB60     		str	r3, [r7, #12]
+  58 0020 FB68     		ldr	r3, [r7, #12]
+  59              	.LBE2:
+  60              	.LBB3:
+  70:Src/gpio.c    ****   __HAL_RCC_GPIOH_CLK_ENABLE();
+  61              		.loc 1 70 0
+  62 0022 0023     		movs	r3, #0
+  63 0024 BB60     		str	r3, [r7, #8]
+  64 0026 174A     		ldr	r2, .L2
+  65 0028 164B     		ldr	r3, .L2
+  66 002a 1B6B     		ldr	r3, [r3, #48]
+  67 002c 43F08003 		orr	r3, r3, #128
+  68 0030 1363     		str	r3, [r2, #48]
+  69 0032 144B     		ldr	r3, .L2
+  70 0034 1B6B     		ldr	r3, [r3, #48]
+  71 0036 03F08003 		and	r3, r3, #128
+  72 003a BB60     		str	r3, [r7, #8]
+  73 003c BB68     		ldr	r3, [r7, #8]
+  74              	.LBE3:
+  75              	.LBB4:
+  71:Src/gpio.c    ****   __HAL_RCC_GPIOA_CLK_ENABLE();
+  76              		.loc 1 71 0
+  77 003e 0023     		movs	r3, #0
+  78 0040 7B60     		str	r3, [r7, #4]
+  79 0042 104A     		ldr	r2, .L2
+  80 0044 0F4B     		ldr	r3, .L2
+  81 0046 1B6B     		ldr	r3, [r3, #48]
+  82 0048 43F00103 		orr	r3, r3, #1
+  83 004c 1363     		str	r3, [r2, #48]
+  84 004e 0D4B     		ldr	r3, .L2
+  85 0050 1B6B     		ldr	r3, [r3, #48]
+  86 0052 03F00103 		and	r3, r3, #1
+  87 0056 7B60     		str	r3, [r7, #4]
+  88 0058 7B68     		ldr	r3, [r7, #4]
+  89              	.LBE4:
+  90              	.LBB5:
+  72:Src/gpio.c    ****   __HAL_RCC_GPIOB_CLK_ENABLE();
+  91              		.loc 1 72 0
+  92 005a 0023     		movs	r3, #0
+  93 005c 3B60     		str	r3, [r7]
+  94 005e 094A     		ldr	r2, .L2
+  95 0060 084B     		ldr	r3, .L2
+  96 0062 1B6B     		ldr	r3, [r3, #48]
+  97 0064 43F00203 		orr	r3, r3, #2
+  98 0068 1363     		str	r3, [r2, #48]
+  99 006a 064B     		ldr	r3, .L2
+ 100 006c 1B6B     		ldr	r3, [r3, #48]
+ARM GAS  /tmp/cc47T95V.s 			page 4
+
+
+ 101 006e 03F00203 		and	r3, r3, #2
+ 102 0072 3B60     		str	r3, [r7]
+ 103 0074 3B68     		ldr	r3, [r7]
+ 104              	.LBE5:
+  73:Src/gpio.c    **** 
+  74:Src/gpio.c    **** }
+ 105              		.loc 1 74 0
+ 106 0076 00BF     		nop
+ 107 0078 1437     		adds	r7, r7, #20
+ 108              	.LCFI3:
+ 109              		.cfi_def_cfa_offset 4
+ 110 007a BD46     		mov	sp, r7
+ 111              	.LCFI4:
+ 112              		.cfi_def_cfa_register 13
+ 113              		@ sp needed
+ 114 007c 5DF8047B 		ldr	r7, [sp], #4
+ 115              	.LCFI5:
+ 116              		.cfi_restore 7
+ 117              		.cfi_def_cfa_offset 0
+ 118 0080 7047     		bx	lr
+ 119              	.L3:
+ 120 0082 00BF     		.align	2
+ 121              	.L2:
+ 122 0084 00380240 		.word	1073887232
+ 123              		.cfi_endproc
+ 124              	.LFE126:
+ 126              		.text
+ 127              	.Letext0:
+ 128              		.file 2 "/usr/local/gcc-arm-none-eabi-5_4-2016q2/arm-none-eabi/include/machine/_default_types.h"
+ 129              		.file 3 "/usr/local/gcc-arm-none-eabi-5_4-2016q2/arm-none-eabi/include/sys/_stdint.h"
+ 130              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
+ 131              		.file 5 "Drivers/CMSIS/Include/core_cm4.h"
+ARM GAS  /tmp/cc47T95V.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 gpio.c
+     /tmp/cc47T95V.s:22     .text.MX_GPIO_Init:00000000 $t
+     /tmp/cc47T95V.s:27     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
+     /tmp/cc47T95V.s:122    .text.MX_GPIO_Init:00000084 $d
+                     .debug_frame:00000010 $d
+
+NO UNDEFINED SYMBOLS

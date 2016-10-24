@@ -70,11 +70,11 @@ ASM_SOURCES = \
 # binaries
 #######################################
 # CC_BIN = /usr/local/gcc-arm-none-eabi-5_4-2016q2/bin/
-CC = arm-none-eabi-gcc
-AS = arm-none-eabi-gcc -x assembler-with-cpp
-CP = arm-none-eabi-objcopy
-AR = arm-none-eabi-ar
-SZ = arm-none-eabi-size
+CC = /usr/local/gcc-arm-none-eabi-5_4-2016q2/bin/arm-none-eabi-gcc
+AS = /usr/local/gcc-arm-none-eabi-5_4-2016q2/bin/arm-none-eabi-gcc -x assembler-with-cpp
+CP = /usr/local/gcc-arm-none-eabi-5_4-2016q2/bin/arm-none-eabi-objcopy
+AR = /usr/local/gcc-arm-none-eabi-5_4-2016q2/bin/arm-none-eabi-ar
+SZ = /usr/local/gcc-arm-none-eabi-5_4-2016q2/bin/arm-none-eabi-size
 HEX = $(CP) -O ihex
 BIN = $(CP) -O binary -S
 

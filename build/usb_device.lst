@@ -1,0 +1,174 @@
+ARM GAS  /tmp/ccCvdFx2.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 6
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.syntax unified
+  17              		.file	"usb_device.c"
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.comm	hUsbDeviceHS,548,4
+  22              		.section	.text.MX_USB_DEVICE_Init,"ax",%progbits
+  23              		.align	2
+  24              		.global	MX_USB_DEVICE_Init
+  25              		.thumb
+  26              		.thumb_func
+  28              	MX_USB_DEVICE_Init:
+  29              	.LFB126:
+  30              		.file 1 "Src/usb_device.c"
+   1:Src/usb_device.c **** /**
+   2:Src/usb_device.c ****   ******************************************************************************
+   3:Src/usb_device.c ****   * @file           : USB_DEVICE  
+   4:Src/usb_device.c ****   * @version        : v1.0_Cube
+   5:Src/usb_device.c ****   * @brief          : This file implements the USB Device 
+   6:Src/usb_device.c ****   ******************************************************************************
+   7:Src/usb_device.c ****   *
+   8:Src/usb_device.c ****   * Copyright (c) 2016 STMicroelectronics International N.V. 
+   9:Src/usb_device.c ****   * All rights reserved.
+  10:Src/usb_device.c ****   *
+  11:Src/usb_device.c ****   * Redistribution and use in source and binary forms, with or without 
+  12:Src/usb_device.c ****   * modification, are permitted, provided that the following conditions are met:
+  13:Src/usb_device.c ****   *
+  14:Src/usb_device.c ****   * 1. Redistribution of source code must retain the above copyright notice, 
+  15:Src/usb_device.c ****   *    this list of conditions and the following disclaimer.
+  16:Src/usb_device.c ****   * 2. Redistributions in binary form must reproduce the above copyright notice,
+  17:Src/usb_device.c ****   *    this list of conditions and the following disclaimer in the documentation
+  18:Src/usb_device.c ****   *    and/or other materials provided with the distribution.
+  19:Src/usb_device.c ****   * 3. Neither the name of STMicroelectronics nor the names of other 
+  20:Src/usb_device.c ****   *    contributors to this software may be used to endorse or promote products 
+  21:Src/usb_device.c ****   *    derived from this software without specific written permission.
+  22:Src/usb_device.c ****   * 4. This software, including modifications and/or derivative works of this 
+  23:Src/usb_device.c ****   *    software, must execute solely and exclusively on microcontroller or
+  24:Src/usb_device.c ****   *    microprocessor devices manufactured by or for STMicroelectronics.
+  25:Src/usb_device.c ****   * 5. Redistribution and use of this software other than as permitted under 
+  26:Src/usb_device.c ****   *    this license is void and will automatically terminate your rights under 
+  27:Src/usb_device.c ****   *    this license. 
+  28:Src/usb_device.c ****   *
+ARM GAS  /tmp/ccCvdFx2.s 			page 2
+
+
+  29:Src/usb_device.c ****   * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS" 
+  30:Src/usb_device.c ****   * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT 
+  31:Src/usb_device.c ****   * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
+  32:Src/usb_device.c ****   * PARTICULAR PURPOSE AND NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY
+  33:Src/usb_device.c ****   * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT 
+  34:Src/usb_device.c ****   * SHALL STMICROELECTRONICS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+  35:Src/usb_device.c ****   * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  36:Src/usb_device.c ****   * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, 
+  37:Src/usb_device.c ****   * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
+  38:Src/usb_device.c ****   * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
+  39:Src/usb_device.c ****   * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+  40:Src/usb_device.c ****   * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  41:Src/usb_device.c ****   *
+  42:Src/usb_device.c ****   ******************************************************************************
+  43:Src/usb_device.c **** */
+  44:Src/usb_device.c **** 
+  45:Src/usb_device.c **** /* Includes ------------------------------------------------------------------*/
+  46:Src/usb_device.c **** 
+  47:Src/usb_device.c **** #include "usb_device.h"
+  48:Src/usb_device.c **** #include "usbd_core.h"
+  49:Src/usb_device.c **** #include "usbd_desc.h"
+  50:Src/usb_device.c **** #include "usbd_cdc.h"
+  51:Src/usb_device.c **** #include "usbd_cdc_if.h"
+  52:Src/usb_device.c **** 
+  53:Src/usb_device.c **** /* USB Device Core handle declaration */
+  54:Src/usb_device.c **** USBD_HandleTypeDef hUsbDeviceHS;
+  55:Src/usb_device.c **** 
+  56:Src/usb_device.c **** /* init function */				        
+  57:Src/usb_device.c **** void MX_USB_DEVICE_Init(void)
+  58:Src/usb_device.c **** {
+  31              		.loc 1 58 0
+  32              		.cfi_startproc
+  33              		@ args = 0, pretend = 0, frame = 0
+  34              		@ frame_needed = 1, uses_anonymous_args = 0
+  35 0000 80B5     		push	{r7, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 7, -8
+  39              		.cfi_offset 14, -4
+  40 0002 00AF     		add	r7, sp, #0
+  41              	.LCFI1:
+  42              		.cfi_def_cfa_register 7
+  59:Src/usb_device.c ****   /* Init Device Library,Add Supported Class and Start the library*/
+  60:Src/usb_device.c ****   USBD_Init(&hUsbDeviceHS, &HS_Desc, DEVICE_HS);
+  43              		.loc 1 60 0
+  44 0004 0122     		movs	r2, #1
+  45 0006 0849     		ldr	r1, .L2
+  46 0008 0848     		ldr	r0, .L2+4
+  47 000a FFF7FEFF 		bl	USBD_Init
+  61:Src/usb_device.c **** 
+  62:Src/usb_device.c ****   USBD_RegisterClass(&hUsbDeviceHS, &USBD_CDC);
+  48              		.loc 1 62 0
+  49 000e 0849     		ldr	r1, .L2+8
+  50 0010 0648     		ldr	r0, .L2+4
+  51 0012 FFF7FEFF 		bl	USBD_RegisterClass
+  63:Src/usb_device.c **** 
+  64:Src/usb_device.c ****   USBD_CDC_RegisterInterface(&hUsbDeviceHS, &USBD_Interface_fops_HS);
+ARM GAS  /tmp/ccCvdFx2.s 			page 3
+
+
+  52              		.loc 1 64 0
+  53 0016 0749     		ldr	r1, .L2+12
+  54 0018 0448     		ldr	r0, .L2+4
+  55 001a FFF7FEFF 		bl	USBD_CDC_RegisterInterface
+  65:Src/usb_device.c **** 
+  66:Src/usb_device.c ****   USBD_Start(&hUsbDeviceHS);
+  56              		.loc 1 66 0
+  57 001e 0348     		ldr	r0, .L2+4
+  58 0020 FFF7FEFF 		bl	USBD_Start
+  67:Src/usb_device.c **** 
+  68:Src/usb_device.c **** }
+  59              		.loc 1 68 0
+  60 0024 00BF     		nop
+  61 0026 80BD     		pop	{r7, pc}
+  62              	.L3:
+  63              		.align	2
+  64              	.L2:
+  65 0028 00000000 		.word	HS_Desc
+  66 002c 00000000 		.word	hUsbDeviceHS
+  67 0030 00000000 		.word	USBD_CDC
+  68 0034 00000000 		.word	USBD_Interface_fops_HS
+  69              		.cfi_endproc
+  70              	.LFE126:
+  72              		.text
+  73              	.Letext0:
+  74              		.file 2 "/usr/local/gcc-arm-none-eabi-5_4-2016q2/arm-none-eabi/include/machine/_default_types.h"
+  75              		.file 3 "/usr/local/gcc-arm-none-eabi-5_4-2016q2/arm-none-eabi/include/sys/_stdint.h"
+  76              		.file 4 "Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h"
+  77              		.file 5 "Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h"
+  78              		.file 6 "Drivers/CMSIS/Include/core_cm4.h"
+  79              		.file 7 "Inc/usbd_desc.h"
+  80              		.file 8 "Inc/usbd_cdc_if.h"
+ARM GAS  /tmp/ccCvdFx2.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 usb_device.c
+                            *COM*:00000224 hUsbDeviceHS
+     /tmp/ccCvdFx2.s:23     .text.MX_USB_DEVICE_Init:00000000 $t
+     /tmp/ccCvdFx2.s:28     .text.MX_USB_DEVICE_Init:00000000 MX_USB_DEVICE_Init
+     /tmp/ccCvdFx2.s:65     .text.MX_USB_DEVICE_Init:00000028 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+USBD_Init
+USBD_RegisterClass
+USBD_CDC_RegisterInterface
+USBD_Start
+HS_Desc
+USBD_CDC
+USBD_Interface_fops_HS
